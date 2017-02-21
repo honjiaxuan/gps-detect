@@ -23,7 +23,7 @@ public class autoStart extends BroadcastReceiver {
             String intentAction = intent.getAction();
             Log.d("tag1autostart1", intent.getAction() + ".");
             if (intentAction.equals("android.location.PROVIDERS_CHANGED")) {
-                GpsChanged.startGpsChangedService(context);
+                DetectLocation.startDetectLocationService(context);
             } 
         }
     }
