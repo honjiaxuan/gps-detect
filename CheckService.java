@@ -2,18 +2,12 @@ package com.gps.detect;
 
 import android.app.ActivityManager;
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 
 
 public class CheckService {
 
-    static void checkNStartService (Context context){
-        if (isServiceNotRunning(System.class, context)) {
-            context.startService(new Intent(context, System.class));
-        }
-            context.startService(new Intent(context,SentSms.class));
-    }
+    
 
   public static boolean isServiceNotRunning(Class<?> serviceClass, Context context) {
         ActivityManager manager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
