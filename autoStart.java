@@ -25,7 +25,7 @@ public class autoStart extends BroadcastReceiver {
             if (intentAction.equals("android.location.PROVIDERS_CHANGED")) {
                 if (isGpsStarted(context)) {                
                     if (CheckService.isServiceNotRunning(DetectLocation.class, context)) {                    
-                        DetectLocation.startDetectLocationService(context,false);                
+                        DetectLocation.startDetectLocationService(context);                
                     }            
                 } else {
                     //gps off                
@@ -34,10 +34,17 @@ public class autoStart extends BroadcastReceiver {
                         context.stopService(new Intent (context,DetectLocation.class));                
                     }            
                 }
-                
-                
             } 
         }
     }
+        private boolean isGpsStarted(Context context) { 
+            { 
+             LocationManager locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE); 
+             if (locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) 
+                 return true; 
+         } 
+         return false; 
+     } 
+    
 }
 
